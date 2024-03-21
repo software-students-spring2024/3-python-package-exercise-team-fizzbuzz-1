@@ -1,13 +1,17 @@
+"""Defines the pet class"""
+
 from enum import Enum
-from typing import List, Dict, AnyStr, Union
+from typing import AnyStr
 from termcolor import colored, COLORS
 
 class Species(Enum):
-    NONE = -1
-    CAT = 0
-    DOG = 1
-    HAMSTER = 2
-    ROCK = 3
+    """Enum representing possible species"""
+
+    NONE = 0
+    CAT = 1
+    DOG = 2
+    HAMSTER = 3
+    ROCK = 4
 
 messages = {
     'create': [
@@ -28,6 +32,8 @@ messages = {
 }
 
 class Pet:
+    """Class representing a pet"""
+
     drawings = {
         'cat': {
             'normal': '/\\__/\\\n(=\'X\'=)\n(")_(")_/',
@@ -54,70 +60,71 @@ class Pet:
             'dead': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
         }
     }
-    
+
+
     def __init__(self, name: AnyStr, species: AnyStr) -> None:
         self.name = name
-        self.hunger = 0
-        self.happiness = 10
-        self.boredom = 0
-        self.thirst = 0
         self.species = species
-        self.talent_level = 0
-        self.talents = []
+        self.talents = {}
         self.color = 'white'
+        self.status = {
+            'hunger': 0,
+            'happiness' : 10,
+            'boredom': 0,
+            'thirst': 0,
+            'sleepiness' : 0
+        }
         self.dead = False
-        self.sleepiness = 0
 
     def get_species_name(self) -> AnyStr:
+        """Returns lower case species name of the pet"""
         return self.species.name.lower()
 
-    def feed(self, numFood: int) -> bool:
-    
-        for i in range(numFood):
-            if self.hunger > 0:
-                self.hunger -= 1
-                return True
+    def feed(self, num_food: int) -> bool:
+        """Feeds the pet if there the hunger bar allows. Returns True if managed to feed
+        False otherwise"""
+        fed = False
+        for _ in range(num_food):
+            if self.status['hunger'] > 0:
+                self.status['hunger'] -= 1
+                fed = True
             else:
                 print(f"{self.name} is not hungry!!")
-                return False
+        return fed
 
     def exercise(self, duration: int) -> bool:
+        """Exercises the pet if the hunger bar allows. Returns True if the
+        pet exercised and false otherwise"""
         exercised = False
-        for i in range(duration):
-            if self.hunger < 10: 
-                self.hunger += 1
+        for _ in range(duration):
+            if self.status['hunger'] < 10:
+                self.status['hunger'] += 1
                 exercised = True
+                if self.status['boredom'] > 0:
+                    self.status['boredom'] -= 1
+                if self.status['happiness'] < 10:
+                    self.status['happiness'] += 1
             else:
                 print(f"{self.name} is too hungry to exercise!!")
-            if self.boredom > 0:
-                self.boredom -= 1
-            if self.happiness < 10:
-                self.happiness += 1
         return exercised
-    
+
     def display(self):
+        """Displays the pet along with their status on the terminal"""
         state = None
         if self.dead:
             state = 'dead'
-        elif self.happiness < 5:
+        elif self.status['happiness'] < 5:
             state = 'unhappy'
-        elif self.sleepiness > 5:
+        elif self.status['sleepiness'] > 5:
             state = 'sleepy'
         else:
             state = 'normal'
         print(colored(Pet.drawings[self.get_species_name()][state], self.color))
 
     def groom(self, color: AnyStr) -> bool:
+        """Changes the appearance of the pet (currently just dyes hair)"""
         if color in COLORS:
             self.color = color
             return True
-        else:
-            print('Invalid color')
-            return False
-            
-
-def create_pet(name: AnyStr = "", species: Species = Species.NONE) -> Union[Pet,None]:
-        if name == "" or species == Species.NONE:
-            print('Name and species are required to create a pet')
-            return None
-        return Pet(name, species)
+        print('Invalid color')
+        return False
