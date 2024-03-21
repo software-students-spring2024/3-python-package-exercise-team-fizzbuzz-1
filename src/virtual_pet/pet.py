@@ -64,16 +64,17 @@ class Pet:
 
     def __init__(self, name: AnyStr, species: AnyStr) -> None:
         self.name = name
-        self.hunger = 0
-        self.happiness = 10
-        self.boredom = 0
-        self.thirst = 0
         self.species = species
-        self.talent_level = 0
-        self.talents = []
+        self.talents = {}
         self.color = 'white'
+        self.status = {
+            'hunger': 0,
+            'happiness' : 10,
+            'boredom': 0,
+            'thirst': 0,
+            'sleepiness' : 0
+        }
         self.dead = False
-        self.sleepiness = 0
 
     def get_species_name(self) -> AnyStr:
         """Returns lower case species name of the pet"""
@@ -84,8 +85,8 @@ class Pet:
         False otherwise"""
         fed = False
         for _ in range(num_food):
-            if self.hunger > 0:
-                self.hunger -= 1
+            if self.status['hunger'] > 0:
+                self.status['hunger'] -= 1
                 fed = True
             else:
                 print(f"{self.name} is not hungry!!")
@@ -96,13 +97,13 @@ class Pet:
         pet exercised and false otherwise"""
         exercised = False
         for _ in range(duration):
-            if self.hunger < 10:
-                self.hunger += 1
+            if self.status['hunger'] < 10:
+                self.status['hunger'] += 1
                 exercised = True
-                if self.boredom > 0:
-                    self.boredom -= 1
-                if self.happiness < 10:
-                    self.happiness += 1
+                if self.status['boredom'] > 0:
+                    self.status['boredom'] -= 1
+                if self.status['happiness'] < 10:
+                    self.status['happiness'] += 1
             else:
                 print(f"{self.name} is too hungry to exercise!!")
         return exercised
@@ -112,9 +113,9 @@ class Pet:
         state = None
         if self.dead:
             state = 'dead'
-        elif self.happiness < 5:
+        elif self.status['happiness'] < 5:
             state = 'unhappy'
-        elif self.sleepiness > 5:
+        elif self.status['sleepiness'] > 5:
             state = 'sleepy'
         else:
             state = 'normal'
@@ -125,6 +126,5 @@ class Pet:
         if color in COLORS:
             self.color = color
             return True
-        else:
-            print('Invalid color')
-            return False
+        print('Invalid color')
+        return False
