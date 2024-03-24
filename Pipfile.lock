@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6eaa2086831982f9722aead8e42a6487fefdfc1437e13a7ce3f9c815c0b93961"
+            "sha256": "b6c7bddcd7053578319f9af6e7f6637b8426505fdc8283ae244b177c8c41309b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -24,12 +24,6 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==2.4.0"
-        },
-        "virtual-pet": {
-            "file": "dist\\virtual_pet-0.0.9.tar.gz",
-            "hashes": [
-                "sha256:9faa0831b36ba2497a731621ce33bc27c4722d9766431ae214bbf6a1bac43994"
-            ]
         }
     },
     "develop": {
@@ -140,6 +134,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==8.1.1"
         },
+        "termcolor": {
+            "hashes": [
+                "sha256:9297c0df9c99445c2412e832e882a7884038a25617c60cea2ad69488d4040d63",
+                "sha256:aab9e56047c8ac41ed798fa36d892a37aca6b3e9159f3e0c24bc64a9b3ac7b7a"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==2.4.0"
+        },
         "tomlkit": {
             "hashes": [
                 "sha256:5cd82d48a3dd89dee1f9d64420aa20ae65cfbd00668d6f094d7578a78efbb77b",
@@ -147,6 +150,12 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==0.12.4"
+        },
+        "virtual-pet": {
+            "file": "dist\\virtual_pet-0.0.9.tar.gz",
+            "hashes": [
+                "sha256:9faa0831b36ba2497a731621ce33bc27c4722d9766431ae214bbf6a1bac43994"
+            ]
         }
     }
 }

@@ -5,12 +5,12 @@ name = "pypi"
 
 [packages]
 termcolor = "*"
-virtual-pet = {file = "dist\\virtual_pet-0.0.9.tar.gz"}
 
 [dev-packages]
 pytest = "*"
 pylint = "*"
 build = "*"
+virtual-pet = {file = "dist\\virtual_pet-0.0.9.tar.gz"}
 
 [requires]
 python_version = "3.7"
