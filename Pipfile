@@ -10,7 +10,8 @@ name = "testpypi"
 
 [packages]
 termcolor = "*"
-virtual-pet = {version = "==0.0.9", index = "testpypi"}
+update = "*"
+virtual-pet = {file = "dist\\virtual_pet-0.1.0.tar.gz"}
 
 [dev-packages]
 pytest = "*"

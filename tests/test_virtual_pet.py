@@ -70,44 +70,50 @@ class Tests:
 
     def test_groom(self, cat: Pet):
         """Tests grooming"""
-        assert cat.groom('pink') is False
+        assert cat.dye('pink') is False
         assert cat.color != 'pink'
-        assert cat.groom('red') is True
+        assert cat.dye('red') is True
         assert cat.color == 'red'
 
 
     def test_feed(self, cat: Pet):
         """Tests feeding the pet"""
         cat.status['hunger'] = 5
-        cat.feed(1)
+        cat.feed("bread")
         assert cat.status['hunger'] == 4
 
     def test_feed_not_hungry(self, dog: Pet):
         """Tests feeding the pet if the pet isn't hungry"""
         dog.status['hunger'] = 0
-        dog.feed(1)
+        dog.feed("bread")
         assert dog.status['hunger'] == 0
 
-    def test_feed_multiple(self, hamster: Pet):
+    def test_feed_allergies(self, cat: Pet):
         """Tests feeding multiple feed points"""
-        hamster.status['hunger'] = 5
-        hamster.feed(3)
-        assert hamster.status['hunger'] == 2
+        cat.status['hunger'] = 5
+        cat.feed('chocolate')
+        assert cat.dead == True
+    
+    def test_feed_fav(self, dog: Pet):
+        """Tests feeding multiple feed points"""
+        dog.status['hunger'] = 5
+        dog.feed('meat')
+        assert dog.status['hunger'] == 3
 
     def test_feed_multiple_times(self, hamster: Pet):
         """Tests feeding mutliple times"""
         hamster.status['hunger'] = 5
-        hamster.feed(2)
-        hamster.feed(1)
-        hamster.feed(1)
-        assert hamster.status['hunger'] == 1
+        hamster.feed('bread')
+        hamster.feed('bread')
+        hamster.feed('bread')
+        assert hamster.status['hunger'] == 2
 
     def test_exercise(self, cat: Pet):
         """Tests exercising under normal conditions"""
         cat.status['boredom'] = 5
         cat.status['happiness'] = 5
         cat.status['hunger'] = 5
-        cat.exercise(1)
+        cat.exercise('catch')
         assert cat.status['boredom'] == 4
         assert cat.status['happiness'] == 6
         assert cat.status['hunger'] == 6
@@ -117,17 +123,29 @@ class Tests:
         dog.status['boredom'] = 5
         dog.status['happiness'] = 5
         dog.status['hunger'] = 10
-        dog.exercise(1)
+        dog.exercise('catch')
         assert dog.status['boredom'] == 5
         assert dog.status['happiness'] == 5
         assert dog.status['hunger'] == 10
-
-    def test_exercise_long_duration(self, cat: Pet):
-        """Tests exercising for a long duration"""
+    
+    def test_exercise_fav(self, cat: Pet):
+        """Tests exercising with favorite exercise"""
         cat.status['boredom'] = 5
         cat.status['happiness'] = 5
-        cat.status['hunger'] = 0
-        cat.exercise(10)
-        assert cat.status['boredom'] == 0
-        assert cat.status['happiness'] == 10
-        assert cat.status['hunger'] == 10
+        cat.status['hunger'] = 5
+        cat.exercise('toy mouse')
+        assert cat.status['boredom'] == 3
+        assert cat.status['happiness'] == 7
+        assert cat.status['hunger'] == 6
+
+    def test_exercise_fav_dead(self, cat: Pet):
+        """Tests exercising a dead cat"""
+        cat.die()
+        assert cat.exercise('laser pointer') == False
+
+    def test_exercise_dead(self, cat: Pet):
+        """Tests exercising a dead cat"""
+        cat.die()
+        assert cat.exercise('catch') == False
+    
+
