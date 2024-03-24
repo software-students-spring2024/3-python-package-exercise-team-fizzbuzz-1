@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b812996e7333b23fbf55668710a80e17d185deaf117575297d909ca2ad98cd92"
+            "sha256": "2c1d955da2097125a7c1d6f05672c0c6d7d71ae3d06b1408b1b887c0605d8cdd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,10 +45,13 @@
             "version": "==0.0.1"
         },
         "virtual-pet": {
-            "file": "dist\\virtual_pet-0.1.0.tar.gz",
             "hashes": [
-                "sha256:1f416712ecf185becf37bc75ec9d335b882cdee81b98367425884be70b6d813c"
-            ]
+                "sha256:5deb41eaa8d7ca69184e7a5ad6f9ed5b09696ab966dcfd604832a2091331fd39",
+                "sha256:f3597139f6bb08978bea3c21368ca9be4f56e0280ce0fa74a4837077354a83cd"
+            ],
+            "index": "testpypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==0.1.1"
         }
     },
     "develop": {
@@ -178,7 +181,7 @@
                 "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44",
                 "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
             ],
-            "markers": "sys_platform == 'win32'",
+            "markers": "os_name == 'nt'",
             "version": "==0.4.6"
         },
         "dill": {
