@@ -1,17 +1,9 @@
 """Defines the pet class"""
 
-from enum import Enum
+# from enum import Enum
 from typing import AnyStr
 from termcolor import colored, COLORS
-
-class Species(Enum):
-    """Enum representing possible species"""
-
-    NONE = 0
-    CAT = 1
-    DOG = 2
-    HAMSTER = 3
-    ROCK = 4
+from virtual_pet.species import Species
 
 messages = {
     'create': [
@@ -34,35 +26,7 @@ messages = {
 class Pet:
     """Class representing a pet"""
 
-    drawings = {
-        'cat': {
-            'normal': '/\\__/\\\n(=\'X\'=)\n(")_(")_/',
-            'unhappy': '/\\__/\\\n(=>X<=)\n(")_(")_/',
-            'tired': '/\\__/\\\n(=~X~=)\n(")_(")_/',
-            'dead': '/\\__/\\\n(=xXx=)\n(")_(")_/'
-        },
-        'dog': {
-            'normal': ' _______\n(| , , |)\n ( (Y) )\n (")_(")',
-            'unhappy': ' _______\n(| > < |)\n ( (Y) )\n (")_(")',
-            'tired': ' _______\n(| ~ ~ |)\n ( (Y) )\n (")_(")',
-            'dead': ' _______\n(| x x |)\n ( (Y) )\n (")_(")'
-        },
-        'hamster': {
-            'normal': ' o-----o\n( \'(X)\' )\nc(")_(")',
-            'unhappy': ' o-----o\n( >(X)< )\nc(")_(")',
-            'tired': ' o-----o\n( ~(X)~ )\nc(")_(")',
-            'dead': ' o-----o\n( x(X)x )\nc(")_(")',
-        },
-        'rock': {
-            'normal': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
-            'unhappy': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
-            'tired': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
-            'dead': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
-        }
-    }
-
-
-    def __init__(self, name: AnyStr, species: AnyStr) -> None:
+    def __init__(self, name: AnyStr, species: Species) -> None:
         self.name = name
         self.species = species
         self.talents = {}
@@ -119,7 +83,7 @@ class Pet:
             state = 'sleepy'
         else:
             state = 'normal'
-        print(colored(Pet.drawings[self.get_species_name()][state], self.color))
+        print(colored(self.species.drawings[state], self.color))
 
     def groom(self, color: AnyStr) -> bool:
         """Changes the appearance of the pet (currently just dyes hair)"""
