@@ -3,6 +3,7 @@ from virtual_pet.species import Species
 
 CAT = Species(
     name= 'cat',
+    sound= 'meow',
     drawings= {
         'normal': '/\\__/\\\n(=\'X\'=)\n(")_(")_/',
         'unhappy': '/\\__/\\\n(=>X<=)\n(")_(")_/',
@@ -15,9 +16,14 @@ CAT = Species(
         'onion',
         'garlic'
     ],
+    fav_food= [
+        'fish',
+        'bird',
+        'tuna'
+    ],
     fav_exercises= [
         'laser pointer',
-        'toy mouse',
+        'toy mouse'
     ],
     talents= [
         'hunting'
@@ -26,6 +32,7 @@ CAT = Species(
 
 DOG = Species(
     name= 'dog',
+    sound= 'woof',
     drawings= {
         'normal': ' _______\n(| , , |)\n ( (Y) )\n (")_(")',
         'unhappy': ' _______\n(| > < |)\n ( (Y) )\n (")_(")',
@@ -38,17 +45,23 @@ DOG = Species(
         'onion',
         'garlic'
     ],
+    fav_food= [
+        'meat',
+        'egg',
+        'bone'
+    ],
     fav_exercises= [
-        'laser pointer',
-        'toy mouse',
+        'catch',
+        'fetch'
     ],
     talents= [
-        'hunting'
+        'smelling'
     ]
 )
 
 HAMSTER = Species(
     name= 'hamster',
+    sound= 'squeak',
     drawings= {
         'normal': ' o-----o\n( \'(X)\' )\nc(")_(")',
         'unhappy': ' o-----o\n( >(X)< )\nc(")_(")',
@@ -56,22 +69,25 @@ HAMSTER = Species(
         'dead': ' o-----o\n( x(X)x )\nc(")_(")',
     },
     allergies= [
-        'chocolate',
-        'grape',
-        'onion',
-        'garlic'
+        'sunflower seeds',
+        'peanuts',
+    ],
+    fav_food= [
+        'carrot',
+        'lettuce'
     ],
     fav_exercises= [
         'laser pointer',
         'toy mouse',
     ],
     talents= [
-        'hunting'
+        'dying'
     ]
 )
 
 ROCK = Species(
     name= 'rock',
+    sound= '...',
     drawings= {
         'normal': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
         'unhappy': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
@@ -79,16 +95,12 @@ ROCK = Species(
         'dead': '  ____\n |    \\\n /     \\\n|      /\n \\____/',
     },
     allergies= [
-        'chocolate',
-        'grape',
-        'onion',
-        'garlic'
     ],
     fav_exercises= [
-        'laser pointer',
-        'toy mouse',
+    ],
+    fav_food= [
     ],
     talents= [
-        'hunting'
-    ]
+    ],
+    immortal= True
 )
