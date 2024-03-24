@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-twine = "*"
-build = "*"
 termcolor = "*"
+virtual-pet = {file = "dist\\virtual_pet-0.0.9.tar.gz"}
 
 [dev-packages]
 pytest = "*"
 pylint = "*"
+build = "*"
 
 [requires]
-python_version = "3.12"
+python_version = "3.7"
