@@ -36,6 +36,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --user pipenv
+          python -m build
           pipenv install pytest
           pipenv install
       - name: Build package
