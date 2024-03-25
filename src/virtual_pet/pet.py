@@ -4,6 +4,7 @@
 from typing import AnyStr
 from termcolor import colored, COLORS
 from virtual_pet.species import Species
+from virtual_pet.weapons import Weapon
 
 class Pet:
     """Class representing a pet"""
@@ -145,7 +146,8 @@ class Pet:
         print(f'{color[0].upper()}{color[1:]} colored dye not available...')
         return False
 
-    def kill(self) -> bool:
+    def kill(self, weapon: Weapon) -> bool:
+        """ Kill the pet with weapon of choice. Return True if killing successful. Return False otherwise"""
         # FIRAS
         pass
 
