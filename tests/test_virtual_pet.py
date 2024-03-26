@@ -1,9 +1,11 @@
 """Testing the virtual pet module"""
 
 import pytest
+from unittest.mock import patch
 from virtual_pet.pet import Pet
 from virtual_pet.utilities import create_pet
 from virtual_pet.default_species import CAT, DOG, ROCK, HAMSTER
+from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
 
 class Tests:
     """Class defines tests"""
@@ -74,7 +76,6 @@ class Tests:
         assert cat.color != 'pink'
         assert cat.dye('red') is True
         assert cat.color == 'red'
-
 
     def test_feed(self, cat: Pet):
         """Tests feeding the pet"""
@@ -147,5 +148,19 @@ class Tests:
         """Tests exercising a dead cat"""
         cat.die()
         assert cat.exercise('catch') == False
+
+    def test_weapons_kill(self, cat: Pet):
+        """ Tests whether weapon can kill cat """
+        assert GUN.kills(cat) == True
+        assert CHOCOLATE_CAKE.kills(cat) == True
+        assert PEANUT_BUTTER.kills(cat) == False
+
+    @patch('builtins.input', )
+    def test_killing_choice(self, cat: Pet):
+        """ Tests whether options are made  """
+        pass
+
+    
+
     
 
