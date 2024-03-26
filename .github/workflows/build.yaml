@@ -1,7 +1,5 @@
 name: CI / CD
-on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,6 +43,7 @@ jobs:
           pipenv install build
           pipenv run python -m build .
       - name: Publish to PyPI
+        if: github.ref == 'refs/heads/master'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
