@@ -151,9 +151,9 @@ class Tests:
 
     def test_weapons_kill(self, cat: Pet):
         """ Tests whether weapon can kill cat """
-        assert GUN.kills(cat) == True
-        assert CHOCOLATE_CAKE.kills(cat) == True
-        assert PEANUT_BUTTER.kills(cat) == False
+        assert GUN.kills(cat.species) == True
+        assert CHOCOLATE_CAKE.kills(cat.species) == True
+        assert PEANUT_BUTTER.kills(cat.species) == False
 
     @patch('builtins.input', )
     def test_killing_choice(self, cat: Pet):
