@@ -5,6 +5,7 @@ from typing import AnyStr
 from termcolor import colored, COLORS
 from virtual_pet.species import Species
 from virtual_pet.weapons import Weapon
+import random
 
 class Pet:
     """Class representing a pet"""
@@ -148,8 +149,43 @@ class Pet:
 
     def kill(self, weapon: Weapon) -> bool:
         """ Kill the pet with weapon of choice. Return True if killing successful. Return False otherwise"""
-        # FIRAS
-        pass
+
+        if self.dead:
+            print(self.name + " is dead...")
+            print("Why are you trying to kill " + self.name + " again, you cruel-hearted scoundrel? Your malice stains even the darkest shadows.")
+            self.display()
+            return False
+
+        elif (weapon.kills(self.species) == True):
+            self.die()
+
+            random_insults = ['vile miscreant, your depravity stains the very air we breathe.',
+            'sinister fiend, your malevolent deeds darken the souls of those around you.', 
+            'wicked villain, your cruelty leaves scars on the hearts of the innocent.',
+            'despicable tyrant, your callousness knows no mercy.',
+            'malevolent demon, your actions betray a soul blacker than the abyss.',
+            'detestable savage, your ruthlessness taints every corner you touch.',
+            'spiteful knave, your malicious intent poisons the well of goodwill.'
+            ]
+            random_insult = random.choice(random_insults)
+
+            print("You have killed " + self.name + ".." + " You " + random_insult)
+
+            return True
+            
+        else:
+            random_attacks = ['May you be blasted for your evil',
+            'May you face divine retribution for your wicked deeds.',
+            'May you be condemned for the darkness you bring into the world.',
+            'May the consequences of your evil actions haunt you relentlessly.',
+            "May you be held accountable for the suffering you've attempted to cause",
+            "May the light of truth expose your malevolence, and may justice prevail."
+            ]
+            random_attack = random.choice(random_attacks)
+
+            print("You have failed at killing " + self.name + ".." + random_attack)
+
+            return False
 
     def do_nothing(self) -> bool:
         # FIRAS
