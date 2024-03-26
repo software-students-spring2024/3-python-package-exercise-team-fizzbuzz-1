@@ -14,9 +14,9 @@ def create_species(name: AnyStr, drawings: Dict, allergies: List, fav_exercises:
         return None
     return Species(name, drawings, allergies, fav_exercises, talents)
 
-def create_weapon(name: AnyStr, kills: List, sound: AnyStr) -> Union[Weapon, None]:
+def create_weapon(name: AnyStr, kill_list: List, sound: AnyStr) -> Union[Weapon, None]:
     """ Create a weapon after data validation """
-    return Weapon(name, kills, sound)
+    return Weapon(name, kill_list, sound)
 
 def create_pet(name: AnyStr = "", species: Species = None) -> Union[Pet,None]:
     """Creates a pet after data validation"""
