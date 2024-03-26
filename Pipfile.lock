@@ -46,12 +46,12 @@
         },
         "virtual-pet": {
             "hashes": [
-                "sha256:e02775a6b79f2370f1761f72805d95a53a8ff69a0bb9bf743b77dfe1ff162e6f",
-                "sha256:ff0573450ddd3d604f1084ecc19220e5d1ad5e590d9d2d17ccffc5e89eb20e8d"
+                "sha256:33816682948e73018e25eaafec1baff1029b175434bf0b4f9a8ed3347ddc80bf",
+                "sha256:ef8d8773274fe43ae4d0eeae511a3e27cc847d100b13963af7aa679542f9d6aa"
             ],
             "index": "testpypi",
             "markers": "python_version >= '3.7'",
-            "version": "==0.1.2"
+            "version": "==0.2.0"
         }
     },
     "develop": {
