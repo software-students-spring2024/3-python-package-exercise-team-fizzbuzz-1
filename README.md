@@ -1,3 +1,48 @@
-# Python Package Exercise
+![Python build & test](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/actions/workflows/build.yaml/badge.svg)
 
-An exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+# Virtual Pet
+
+## Team members
+
+- [Dhiyaa Al Jorf](https://github.com/DoodyShark)
+
+- [Firas Darwish](https://github.com/FirasBDarwish)
+
+- [Shubhi Upadhyay](https://github.com/shubhiupa19)
+
+## Description
+
+virtual_pet is a python package that allows you to create, maintain, etc. a bunch of virtual pets. The behaviour and reactions of these pets are dependant on their species and other factors, which makes it a more enjoyable experience. The package allows for both handling pets directly from code, or a terminal game that accepts text input.
+
+## How to install and use this package
+
+1. Create a pipenv-managed virtual environment and install the latest version of virtual-[et]: pipenv install -i https://test.pypi.org/simple/ virtual-pet. (Note that you can add the version number by replacing virtual-pet with virtual-pet==X.X.X. Also note that if you've previously created a pipenv virtual environment in the same directory, you may have to delete the old one first. Find out where it is located with the pipenv --venv command.)
+1. Activate the virtual environment: pipenv shell.
+1. Create a Python program file that imports virtual-pet and uses it, e.g. from virtual-pet import utilities and then run utilities.play_game()
+1. Run the program: python3 my_program_filename.py.
+1. Exit the virtual environment: exit.
+
+Alternatively, you can run the module directly from the terminal:
+
+1. Create and activate up the pipenv virtual environment as before.
+1. Run the package directly from the command line: python3 -m virtual_pet. This should run the code in the __main__.py file. This should begin the game loop
+1. Exit the virtual environment.
+
+Example python file:
+
+There is an example python file provided in the repository: virtual_pet_example.py. It includes all functionalities in the package. Additonally, the code is extensively commented if you want to pry deeper into the functionality
+
+## How to contribute to this project
+
+1. Clone the [repository](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/)
+1. Activate the virtual environment: pipenv shell.
+1. While updating, ensure that you are running in editable mode: pipenv install -e .
+1. When done updating, 
+    1. Deactivate editing mode by uninstalling the local version of virtual-pet: pipenv uninstall virtual-pet.
+    1. Install the remote version of virtual-pet from testpypi: pipenv install -i https://test.pypi.org/simple/ virtual-pet
+    1. update the version number on pyproject.toml file
+    1. Build the project run: python -m build
+    1. Verify that the built .tar archive has the files you expect your package to have (including any important non-code files) by running the command: tar --list -f dist/virtual_pet-X.X.X.tar.gz, where X.X.X is replaced with the current version number.
+    1. Upload your changes to the TestPyPI repository using twine, e.g. twine upload -r testpypi dist/*. This sstep assumes you have access to the API key
+
+To test your code, there is a set of tests provided in the tests/test_virtual_pet.py file. Run the tests by running: pytest. If an error occurs, run python -m pytest. If the error persists, ensure that pytest is installed (it is included in the dev dependencies of the pipenv so if the pipenv is activated correctly, this shouldn't be an issue).
