@@ -75,6 +75,7 @@ def manage_pet(pet: Pet):
                 set=1
             else:
                 print("Invalid weapon! Try again.")
+        return
     if choice == 6:
         pet.do_nothing()
             
