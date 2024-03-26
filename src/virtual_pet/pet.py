@@ -8,7 +8,7 @@ from virtual_pet.weapons import Weapon
 import random
 
 class Pet:
-    """Class representing a pet"""
+    """Class representing a pet, containing all the necessary methods to interact with the pet"""
 
     def __init__(self, name: AnyStr, species: Species) -> None:
         self.name = name
@@ -38,7 +38,7 @@ class Pet:
         return True
 
     def feed(self, food: AnyStr = "") -> bool:
-        """Feeds the pet if there the hunger bar allows. Returns True if managed to feed
+        """Feeds the pet if the hunger bar allows. Returns True if managed to feed
         False otherwise"""
 
         if self.dead:
@@ -86,6 +86,7 @@ class Pet:
             print('...')
             return True
 
+       
         multiplier = 1
         if exercise_type in self.species.fav_exercises:
             multiplier *= 2
@@ -204,7 +205,7 @@ class Pet:
         changed = False
 
         if(self.status['hunger'] >= 0):
-            hunger_addition=random.randint(0,1,2)
+            hunger_addition=random.randint(0, 2)
             self.status['hunger']+=hunger_addition
             if(self.status['hunger'] > 10):
                 print(self.name + " starved to death! Well done taking care of them..")
@@ -212,7 +213,7 @@ class Pet:
             changed=True
         
         if(self.status['happiness'] >= 0):
-            happiness_subtraction=random.randint(0,1,2)
+            happiness_subtraction=random.randint(0, 2)
             self.status['happiness']-=happiness_subtraction
             if(self.status['happiness'] < 0):
                 print(self.name + " got depressed and killed itself. You're such a great parent..")
@@ -220,15 +221,15 @@ class Pet:
             changed=True
         
         if(self.status['boredom'] >= 0):
-            boredom_addition = random.randint(0,1,2)
-            self.satus['boredom']+=boredom_addition
-            if(self.status['bordeom'] > 10):
+            boredom_addition = random.randint(0, 2)
+            self.status['boredom']+=boredom_addition
+            if(self.status['boredom'] > 10):
                 print(self.name + " got bored to death! If only you had showed them a little more attention..")
                 self.die()
             changed=True
         
         if(self.status['thirst'] >= 0):
-            thirst_addition = random.randint(0,1,2)
+            thirst_addition = random.randint(0, 2)
             self.status['thirst']+=thirst_addition
             if(self.status['thirst'] > 10):
                 print(self.name + " died out of dehydration! If only you hadn't hogged up all the water..")
@@ -236,7 +237,7 @@ class Pet:
             changed=True
         
         if(self.status['sleepiness'] >= 0):
-            sleepiness_addition = random.randint(0,1,2)
+            sleepiness_addition = random.randint(0, 2)
             self.status['sleepiness']+=sleepiness_addition
             if(self.status['sleepiness'] > 10):
                 print(self.name + " died of insomnia. If only you had tucked them into bed..")
