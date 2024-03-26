@@ -3,7 +3,9 @@ from typing import AnyStr, Union, Dict, List
 from os import system
 from virtual_pet.pet import Pet
 from virtual_pet.species import Species
+from virtual_pet.weapons import Weapon
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
+from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
 
 def create_species(name: AnyStr, drawings: Dict, allergies: List, fav_exercises: List, talents: List) -> Union[Species, None]:
     """Creates a species after data validation"""
@@ -11,6 +13,10 @@ def create_species(name: AnyStr, drawings: Dict, allergies: List, fav_exercises:
         print("Missing drawings:\n Please ensure {'normal', 'unhappy', 'mad', 'dead'} are in the list of drawings")
         return None
     return Species(name, drawings, allergies, fav_exercises, talents)
+
+def create_weapon(name: AnyStr, kill_list: List, sound: AnyStr) -> Union[Weapon, None]:
+    """ Create a weapon after data validation """
+    return Weapon(name, kill_list, sound)
 
 def create_pet(name: AnyStr = "", species: Species = None) -> Union[Pet,None]:
     """Creates a pet after data validation"""
@@ -28,7 +34,8 @@ def manage_pet(pet: Pet):
     print('\t2 - Exercise')
     print('\t3 - Sleep (UNIMPLEMENTED)')
     print('\t4 - Dye')
-    print('\t5 - Shoot (UNIMPLEMENTED)')
+    print('\t5 - Shoot')
+    print('\t6 - Nothing')
     choice = int(input(''))
     if choice == 1:
         print('What would you like to feed the pet?')
@@ -50,7 +57,28 @@ def manage_pet(pet: Pet):
             color = input('').lower()
         return
     if choice == 5:
-        pass
+        set = 0
+        while(set == 0):
+            print("What weapon would you like to use?")
+            print('\t1 - Gun')
+            print('\t2 - Chocolate Cake')
+            print('\t3 - Peanut Butter')
+            gun_choice = int(input(''))
+            if gun_choice == 1:
+                pet.kill(GUN)
+                set=1
+            elif gun_choice == 2:
+                pet.kill(CHOCOLATE_CAKE)
+                set=1
+            elif gun_choice == 3:
+                pet.kill(PEANUT_BUTTER)
+                set=1
+            else:
+                print("Invalid weapon! Try again.")
+        return
+    if choice == 6:
+        pet.do_nothing()
+            
         return
         
 

@@ -4,6 +4,8 @@
 from typing import AnyStr
 from termcolor import colored, COLORS
 from virtual_pet.species import Species
+from virtual_pet.weapons import Weapon
+import random
 
 class Pet:
     """Class representing a pet"""
@@ -145,10 +147,103 @@ class Pet:
         print(f'{color[0].upper()}{color[1:]} colored dye not available...')
         return False
 
-    def kill(self) -> bool:
-        # FIRAS
-        pass
+    def kill(self, weapon: Weapon) -> bool:
+        """ Kill the pet with weapon of choice. Return True if killing successful. Return False otherwise"""
+
+        if self.dead:
+            print(self.name + " is dead...")
+            print("Why are you trying to kill " + self.name + " again, you cruel-hearted scoundrel? Your malice stains even the darkest shadows.")
+            self.display()
+            return False
+
+        elif (weapon.kills(self.species) == True):
+            self.die()
+
+            random_insults = ['vile miscreant, your depravity stains the very air we breathe.',
+            'sinister fiend, your malevolent deeds darken the souls of those around you.', 
+            'wicked villain, your cruelty leaves scars on the hearts of the innocent.',
+            'despicable tyrant, your callousness knows no mercy.',
+            'malevolent demon, your actions betray a soul blacker than the abyss.',
+            'detestable savage, your ruthlessness taints every corner you touch.',
+            'spiteful knave, your malicious intent poisons the well of goodwill.'
+            ]
+            random_insult = random.choice(random_insults)
+
+            print(weapon.sound)
+            print("You have killed " + self.name + ".." + " with " + weapon.name + " You " + random_insult)
+
+            return True
+            
+        else:
+            random_attacks = ['May you be blasted for your evil',
+            'May you face divine retribution for your wicked deeds.',
+            'May you be condemned for the darkness you bring into the world.',
+            'May the consequences of your evil actions haunt you relentlessly.',
+            "May you be held accountable for the suffering you've attempted to cause",
+            "May the light of truth expose your malevolence, and may justice prevail."
+            ]
+            random_attack = random.choice(random_attacks)
+
+            print("You have failed at killing " + self.name + ".." + random_attack)
+
+            return False
 
     def do_nothing(self) -> bool:
-        # FIRAS
-        pass
+        """ Does nothing and pseudorandomly changes pet's status, possibly killing them if thresholds for survival are tested """
+
+        if self.dead:
+            print(self.name + " is dead...")
+            print("All they can do is absolutely nothing.")
+            self.display()
+            return False
+
+        if self.species.immortal:
+            print('...')
+            return True
+        
+        changed = False
+
+        if(self.status['hunger'] >= 0):
+            hunger_addition=random.randint(0,1,2)
+            self.status['hunger']+=hunger_addition
+            if(self.status['hunger'] > 10):
+                print(self.name + " starved to death! Well done taking care of them..")
+                self.die()
+            changed=True
+        
+        if(self.status['happiness'] >= 0):
+            happiness_subtraction=random.randint(0,1,2)
+            self.status['happiness']-=happiness_subtraction
+            if(self.status['happiness'] < 0):
+                print(self.name + " got depressed and killed itself. You're such a great parent..")
+                self.die()
+            changed=True
+        
+        if(self.status['boredom'] >= 0):
+            boredom_addition = random.randint(0,1,2)
+            self.satus['boredom']+=boredom_addition
+            if(self.status['bordeom'] > 10):
+                print(self.name + " got bored to death! If only you had showed them a little more attention..")
+                self.die()
+            changed=True
+        
+        if(self.status['thirst'] >= 0):
+            thirst_addition = random.randint(0,1,2)
+            self.status['thirst']+=thirst_addition
+            if(self.status['thirst'] > 10):
+                print(self.name + " died out of dehydration! If only you hadn't hogged up all the water..")
+                self.die()
+            changed=True
+        
+        if(self.status['sleepiness'] >= 0):
+            sleepiness_addition = random.randint(0,1,2)
+            self.status['sleepiness']+=sleepiness_addition
+            if(self.status['sleepiness'] > 10):
+                print(self.name + " died of insomnia. If only you had tucked them into bed..")
+                self.die()
+            changed=True
+        
+        return changed
+
+
+
