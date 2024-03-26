@@ -29,7 +29,8 @@ def manage_pet(pet: Pet):
     print('\t2 - Exercise')
     print('\t3 - Sleep (UNIMPLEMENTED)')
     print('\t4 - Dye')
-    print('\t5 - Shoot (UNIMPLEMENTED)')
+    print('\t5 - Shoot')
+    print('\t6 - Nothing')
     choice = int(input(''))
     if choice == 1:
         print('What would you like to feed the pet?')
@@ -69,6 +70,8 @@ def manage_pet(pet: Pet):
                 set=1
             else:
                 print("Invalid weapon! Try again.")
+    if choice == 6:
+        pet.do_nothing()
             
         return
         
