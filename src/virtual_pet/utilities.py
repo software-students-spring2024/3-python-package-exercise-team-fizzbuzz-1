@@ -3,6 +3,7 @@ from typing import AnyStr, Union, Dict, List
 from os import system
 from virtual_pet.pet import Pet
 from virtual_pet.species import Species
+from virtual_pet.weapons import Weapon
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
 from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
 
@@ -12,6 +13,10 @@ def create_species(name: AnyStr, drawings: Dict, allergies: List, fav_exercises:
         print("Missing drawings:\n Please ensure {'normal', 'unhappy', 'mad', 'dead'} are in the list of drawings")
         return None
     return Species(name, drawings, allergies, fav_exercises, talents)
+
+def create_weapon(name: AnyStr, kills: List, sound: AnyStr) -> Union[Weapon, None]:
+    """ Create a weapon after data validation """
+    return Weapon(name, kills, sound)
 
 def create_pet(name: AnyStr = "", species: Species = None) -> Union[Pet,None]:
     """Creates a pet after data validation"""
