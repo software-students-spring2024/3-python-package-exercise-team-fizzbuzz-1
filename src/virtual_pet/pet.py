@@ -169,7 +169,8 @@ class Pet:
             ]
             random_insult = random.choice(random_insults)
 
-            print("You have killed " + self.name + ".." + " You " + random_insult)
+            print(weapon.sound)
+            print("You have killed " + self.name + ".." + " with " + weapon.name + " You " + random_insult)
 
             return True
             
