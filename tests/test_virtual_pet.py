@@ -28,6 +28,7 @@ class Tests:
         assert pet.status['happiness'] == 10
         assert pet.status['boredom'] == 0
         assert pet.status['thirst'] == 0
+        pet.talents = {"Purring": "Meowing"}
         yield pet
 
     @pytest.fixture
@@ -69,9 +70,17 @@ class Tests:
         assert dog.get_species_name() == 'dog'
         assert hamster.get_species_name() == 'hamster'
         assert rock.get_species_name() == 'rock'
+    
+    def test_get_species_name_none(self):
+        """Tests getting the species name of a None pet"""
+        pet = create_pet("test_none", None)
+        if pet is None:
+            assert pet is None
+        else:
+            assert pet.get_species_name() is None
 
-    def test_groom(self, cat: Pet):
-        """Tests grooming"""
+    def test_dye(self, cat: Pet):
+        """ Tests dying the pet, both with an invalid color (pink) and a valid color (red)"""
         assert cat.dye('pink') is False
         assert cat.color != 'pink'
         assert cat.dye('red') is True
@@ -140,27 +149,83 @@ class Tests:
         assert cat.status['hunger'] == 6
 
     def test_exercise_fav_dead(self, cat: Pet):
-        """Tests exercising a dead cat"""
+        """Tests exercising a dead cat with favorite exercise"""
         cat.die()
         assert cat.exercise('laser pointer') == False
 
     def test_exercise_dead(self, cat: Pet):
-        """Tests exercising a dead cat"""
+        """Tests exercising a dead cat with generic exercise"""
         cat.die()
         assert cat.exercise('catch') == False
+    
 
     def test_weapons_kill(self, cat: Pet):
         """ Tests whether weapon can kill cat """
         assert GUN.kills(cat.species) == True
         assert CHOCOLATE_CAKE.kills(cat.species) == True
         assert PEANUT_BUTTER.kills(cat.species) == False
+    
+    def test_weapons_kill_dog(self, dog: Pet):
+        """ Tests whether weapon can kill dog """
+        assert GUN.kills(dog.species) == True
+        assert CHOCOLATE_CAKE.kills(dog.species) == True
+        assert PEANUT_BUTTER.kills(dog.species) == False
 
     @patch('builtins.input', )
     def test_killing_choice(self, cat: Pet):
-        """ Tests whether options are made  """
+        """ Tests killing an animal with a weapon of choice """
         pass
 
+    def test_die_already_dead(self, cat: Pet):
+        """Tests killing a dead animal"""
+        cat.dead = True
+        assert cat.kill(GUN) == False
+
+
+    def test_display(self, cat: Pet):
+        """Tests displaying the pet"""
+        cat.display()
+        cat.status['happiness'] = 5
+        cat.display()
+        cat.status['sleepiness'] = 5
+        cat.display()
+        cat.dead = True
+        cat.display()
+
+    def test_create_weapon(self):
+        """Tests creating a weapon"""
+        assert GUN.name == 'gun'
+        assert CHOCOLATE_CAKE.name == 'chocolate cake'
+        assert PEANUT_BUTTER.name == 'peanut butter'
+
     
+    def test_do_nothing_dead(self, cat: Pet):
+        """Tests the do_nothing method when the pet is already dead"""
+        cat.dead = True
+        assert cat.do_nothing() == False
+
+    def test_do_nothing_alive(self, cat: Pet):
+        """Tests the do_nothing method when the pet is alive"""
+        assert cat.do_nothing() == True
+    
+    def test_pet_has_talent(self, cat: Pet):
+        """Tests that a pet has a talent"""
+        assert "Purring" in cat.talents
+
+    def test_feed_dead(self, cat: Pet):
+        """Tests feeding a dead pet"""
+        cat.dead = True
+        assert cat.feed('bread') == False
+
+
+
+    
+    
+    
+
+    
+
+        
 
     
 
