@@ -35,7 +35,7 @@ def manage_pet(pet: Pet):
     print('\t2 - Exercise')
     print('\t3 - Sleep')
     print('\t4 - Dye')
-    print('\t5 - Shoot')
+    print('\t5 - Kill')
     print('\t6 - Sleep')
     print('')
     choice = int(input(''))
