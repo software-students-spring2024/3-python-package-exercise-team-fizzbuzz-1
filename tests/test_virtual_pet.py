@@ -158,7 +158,6 @@ class Tests:
         cat.die()
         assert cat.exercise('catch') == False
     
-
     def test_weapons_kill(self, cat: Pet):
         """ Tests whether weapon can kill cat """
         assert GUN.kills(cat.species) == True
@@ -176,7 +175,7 @@ class Tests:
         """ Tests whether options are made to kill cat with gun """
         manage_pet(cat)
         assert cat.dead == True
-        assert cat.do_nothing == False
+        assert cat.do_nothing() == False
 
     def test_die_already_dead(self, cat: Pet):
         """Tests killing a dead animal"""
@@ -198,7 +197,6 @@ class Tests:
         assert GUN.name == 'gun'
         assert CHOCOLATE_CAKE.name == 'chocolate cake'
         assert PEANUT_BUTTER.name == 'peanut butter'
-
     
     def test_do_nothing_dead(self, cat: Pet):
         """Tests the do_nothing method when the pet is already dead"""
