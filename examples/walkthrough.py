@@ -1,5 +1,4 @@
 # this is a walkthrough of the game. If the file is run, the user tests a (narrated) demo/walkthrough of using the package. The code is commented to point out the main functions that are used.
-
 from virtual_pet.utilities import create_pet
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
 from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
