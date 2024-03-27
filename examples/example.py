@@ -41,10 +41,13 @@ pet.display()
 # Changes the appearance of pet by dying its hair red. Returns true if successful (color is defined) and false otherwise
 pet.dye("red")
 
-# Kill pet with weapon determined earlier (this will kill pet as weapon was initialized to kill cats)
-# Returns true if kill successful, False otherwise
-pet.kill(weapon) # alternatively, choose weapon from default_weapons, like GUN
+# puts the pet to sleep this turn if possible
+pet.sleep()
 
 # Does nothing and pseudorandomly changes pet's status, possibly killing them if thresholds for survival are tested
 # returns True if any of the pet's status metrics change, False otherwise
 pet.do_nothing()
+
+# Kill pet with weapon determined earlier (this will kill pet as weapon was initialized to kill cats)
+# Returns true if kill successful, False otherwise
+pet.kill(weapon) # alternatively, choose weapon from default_weapons, like GUN
