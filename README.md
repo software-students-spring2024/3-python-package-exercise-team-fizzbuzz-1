@@ -51,7 +51,7 @@ To test your code, there is a set of tests provided in the tests/test_virtual_pe
 
 ### Functions:
 
-1. Functions in [src/virtual_pet/utilities.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/src/virtual_pet/utilities.py)
+1. Functions in [utilities.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/src/virtual_pet/utilities.py)
 
 ```python
 
@@ -76,7 +76,7 @@ def create_pet(name: AnyStr = "", species: Species = None) -> Union[Pet,None]:
 
 ```
 
-1. Functions in [src/virtual_pet/pet.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/src/virtual_pet/pet.py) under Pet class
+1. Functions in [pet.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/src/virtual_pet/pet.py) under Pet class
 
 ```python
 
@@ -116,7 +116,7 @@ def die(self) -> bool:
 
 Example file showcasing how to interact with virtual_pet methods and functions
 
-Link to example file: [example.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/examples/example.py.py)
+Link to example file: [example.py](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1/blob/main/examples/example.py)
 
 ```python
 
