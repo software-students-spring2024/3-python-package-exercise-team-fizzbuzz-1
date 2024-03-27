@@ -3,7 +3,7 @@
 import pytest
 from unittest.mock import patch
 from virtual_pet.pet import Pet
-from virtual_pet.utilities import create_pet
+from virtual_pet.utilities import create_pet, manage_pet
 from virtual_pet.default_species import CAT, DOG, ROCK, HAMSTER
 from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
 
@@ -171,16 +171,17 @@ class Tests:
         assert CHOCOLATE_CAKE.kills(dog.species) == True
         assert PEANUT_BUTTER.kills(dog.species) == False
 
-    @patch('builtins.input', )
-    def test_killing_choice(self, cat: Pet):
-        """ Tests killing an animal with a weapon of choice """
-        pass
+    @patch('builtins.input', side_effect = ['5','1'])
+    def test_killing_choice(self, cat: Pet, capsys):
+            """ Tests whether options are made to kill cat with gun """
+            manage_pet(cat)
+            assert Pet.dead == True
+            assert Pet.do_nothing == False
 
     def test_die_already_dead(self, cat: Pet):
         """Tests killing a dead animal"""
         cat.dead = True
         assert cat.kill(GUN) == False
-
 
     def test_display(self, cat: Pet):
         """Tests displaying the pet"""
