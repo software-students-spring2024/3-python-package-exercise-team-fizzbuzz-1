@@ -173,10 +173,10 @@ class Tests:
 
     @patch('builtins.input', side_effect = ['5','1'])
     def test_killing_choice(self, cat: Pet, capsys):
-            """ Tests whether options are made to kill cat with gun """
-            manage_pet(cat)
-            assert cat.dead == True
-            assert cat.do_nothing == False
+        """ Tests whether options are made to kill cat with gun """
+        manage_pet(cat)
+        assert cat.dead == True
+        assert cat.do_nothing == False
 
     def test_die_already_dead(self, cat: Pet):
         """Tests killing a dead animal"""
