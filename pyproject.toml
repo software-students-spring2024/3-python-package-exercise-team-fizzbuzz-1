@@ -8,7 +8,7 @@ dependencies = [
 ]
 name = "virtual_pet"
 description = "A virtual pet game."
-version = "0.2.4"
+version = "0.2.6"
 authors = [
   { name="Dhiyaa Al Jorf", email= "da2863@nyu.edu" },
   { name= "Firas Darwish", email= "fbd2014@nyu.edu" },

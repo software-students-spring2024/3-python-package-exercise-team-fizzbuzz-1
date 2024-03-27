@@ -33,18 +33,19 @@ def manage_pet(pet: Pet):
     print('Options:')
     print('\t1 - Feed')
     print('\t2 - Exercise')
-    print('\t3 - Sleep (UNIMPLEMENTED)')
+    print('\t3 - Sleep')
     print('\t4 - Dye')
     print('\t5 - Shoot')
-    print('\t6 - Nothing')
+    print('\t6 - Sleep')
+    print('')
     choice = int(input(''))
     if choice == 1:
-        print('What would you like to feed the pet?')
+        print('What would you like to feed the pet? (e.g. chocolate, tuna, etc)')
         food = input('')
         pet.feed(food)
         return
     if choice == 2:
-        print('What exercise would you like the pet to perform?')
+        print('What exercise would you like the pet to perform? (e.g. catch, laser pointer, etc.)')
         exercise = input('')
         pet.exercise(exercise)
     if choice == 3:
@@ -54,6 +55,7 @@ def manage_pet(pet: Pet):
         print('Enter color')
         color = input('').lower()
         while not pet.dye(color):
+            print('')
             print('Please try again:')
             color = input('').lower()
         return
@@ -78,13 +80,12 @@ def manage_pet(pet: Pet):
                 print("Invalid weapon! Try again.")
         return
     if choice == 6:
-        pet.do_nothing()
-            
+        pet.sleep()
         return
         
 
 def play_game(numTurns: int = float('inf')):
-    pets = []
+    pets : List[Pet] = []
     i = 0
     while i < numTurns:
         system('cls')
@@ -106,6 +107,7 @@ def play_game(numTurns: int = float('inf')):
             print('\t3 - Hamster')
             print('\t4 - Rock')
             pet_species = [CAT, DOG, HAMSTER, ROCK][int(input('')) - 1]
+            print('')
             pet_name = input('Enter pet name: ')
             system('cls')
             pets.append(create_pet(pet_name, pet_species))
@@ -121,5 +123,10 @@ def play_game(numTurns: int = float('inf')):
         else:
             print('Thanks for playing :)')
             return
+        input('Press Enter...')
+        system('cls')
+        print('What happened after you made your move:')
+        for pet in pets:
+            pet.do_nothing()
         input('Press Enter...')
         continue

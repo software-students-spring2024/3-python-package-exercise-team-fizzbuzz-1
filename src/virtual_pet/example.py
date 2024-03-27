@@ -1,3 +1,4 @@
+"""Example file to demonstrat the functionality of this package"""
 from virtual_pet.utilities import create_pet
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
 from os import system

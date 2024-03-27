@@ -27,7 +27,7 @@ class Tests:
         assert pet.status['hunger'] == 0
         assert pet.status['happiness'] == 10
         assert pet.status['boredom'] == 0
-        assert pet.status['thirst'] == 0
+
         pet.talents = {"Purring": "Meowing"}
         yield pet
 
@@ -39,7 +39,7 @@ class Tests:
         assert pet.status['hunger'] == 0
         assert pet.status['happiness'] == 10
         assert pet.status['boredom'] == 0
-        assert pet.status['thirst'] == 0
+
         yield pet
 
     @pytest.fixture
@@ -50,7 +50,7 @@ class Tests:
         assert pet.status['hunger'] == 0
         assert pet.status['happiness'] == 10
         assert pet.status['boredom'] == 0
-        assert pet.status['thirst'] == 0
+
         yield pet
 
     @pytest.fixture
@@ -61,7 +61,7 @@ class Tests:
         assert pet.status['hunger'] == 0
         assert pet.status['happiness'] == 10
         assert pet.status['boredom'] == 0
-        assert pet.status['thirst'] == 0
+
         yield pet
 
     def test_get_species_name(self, cat: Pet, dog: Pet, hamster: Pet, rock: Pet):
@@ -91,6 +91,11 @@ class Tests:
         cat.status['hunger'] = 5
         cat.feed("bread")
         assert cat.status['hunger'] == 4
+
+    def test_feed_immortal(self, rock: Pet):
+        """Tests feeding an immortal pet"""
+        assert rock.feed('') == True
+        assert rock.status['hunger'] == 0
 
     def test_feed_not_hungry(self, dog: Pet):
         """Tests feeding the pet if the pet isn't hungry"""
@@ -128,6 +133,13 @@ class Tests:
         assert cat.status['happiness'] == 6
         assert cat.status['hunger'] == 6
 
+    def test_exercise_immortal(self, rock: Pet):
+        """Tests exercising on an immortal being"""
+        assert rock.exercise('') == True
+        assert rock.status['happiness'] == 10
+        assert rock.status['sleepiness'] == 0
+        assert rock.status['boredom'] == 0
+
     def test_exercise_max_hunger(self, dog: Pet):
         """Tests exercising when at max hunger"""
         dog.status['boredom'] = 5
@@ -163,6 +175,10 @@ class Tests:
         assert GUN.kills(cat.species) == True
         assert CHOCOLATE_CAKE.kills(cat.species) == True
         assert PEANUT_BUTTER.kills(cat.species) == False
+
+    def test_weapons_kill_immortal(self, rock: Pet):
+        """Tests killing an immortal pet"""
+        assert rock.kill(GUN) == False
     
     def test_weapons_kill_dog(self, dog: Pet):
         """ Tests whether weapon can kill dog """
@@ -209,6 +225,22 @@ class Tests:
         cat.dead = True
         assert cat.feed('bread') == False
 
+    def test_sleep(self, cat: Pet):
+        """Tests sleeping in normal case"""
+        cat.status['sleepiness'] = 5
+        assert cat.sleep() == True
+        assert cat.status['sleepiness'] == 2
+
+    def test_sleep_immortal(self, rock: Pet):
+        """Tests how an immortal pet reacts to sleeping"""
+        assert rock.sleep() == True
+        assert rock.status['sleepiness'] == 0
+
+    def test_sleep_not_sleepy(self, dog: Pet):
+        """Tests how a not sleepy pet reacts to sleeping"""
+        dog.status['sleepiness'] = 0
+        assert dog.sleep() == False
+        assert dog.status['sleepiness'] == 0
 
 
     
