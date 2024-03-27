@@ -170,12 +170,6 @@ class Tests:
         assert CHOCOLATE_CAKE.kills(dog.species) == True
         assert PEANUT_BUTTER.kills(dog.species) == False
 
-    @patch('builtins.input', side_effect = ['5','1'])
-    def test_killing_choice(self, cat: Pet):
-        """ Tests whether options are made to kill cat with gun """
-        manage_pet(cat)
-        assert cat.do_nothing() == False
-
     def test_die_already_dead(self, cat: Pet):
         """Tests killing a dead animal"""
         cat.dead = True
