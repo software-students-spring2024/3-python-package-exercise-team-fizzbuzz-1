@@ -272,7 +272,3 @@ system('clear')
 print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=")
 print("Thank you for going through this walkthrough and learning about the different functions of this game. Happy gaming!")
 print()
-
-
-
-
