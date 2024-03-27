@@ -10,6 +10,14 @@
 
 - [Shubhi Upadhyay](https://github.com/shubhiupa19)
 
+## Links
+
+- [Github Repo](https://github.com/software-students-spring2024/3-python-package-exercise-team-fizzbuzz-1)
+
+- [TestPyPi](https://test.pypi.org/project/virtual-pet/)
+
+- [PyPi](https://pypi.org/project/virtual-pet/)
+
 ## Description
 
 virtual_pet is a python package that allows you to create, maintain, etc. a bunch of virtual pets. The behaviour and reactions of these pets are dependant on their species and other factors, which makes it a more enjoyable experience. The package allows for both handling pets directly from code, or a terminal game that accepts text input.
