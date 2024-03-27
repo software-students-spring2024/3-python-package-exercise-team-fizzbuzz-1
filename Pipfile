@@ -10,8 +10,7 @@ name = "testpypi"
 
 [packages]
 termcolor = "*"
-update = "*"
-virtual-pet = {version = "*", index = "testpypi"}
+virtual-pet = {file = ".", editable = true}
 
 [dev-packages]
 pytest = "*"

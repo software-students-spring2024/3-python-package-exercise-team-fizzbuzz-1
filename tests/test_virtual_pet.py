@@ -174,6 +174,13 @@ class Tests:
         """Tests killing a dead animal"""
         cat.dead = True
         assert cat.kill(GUN) == False
+    
+    @patch('builtins.input', side_effect=['5', '1'])
+    def test_choice_5_with_gun(mock_input, cat):
+        with patch.object(Pet, 'kill') as mock_kill:
+            manage_pet(cat)
+            mock_kill.assert_called_once_with(GUN)
+            assert cat.dead is True
 
     def test_display(self, cat: Pet):
         """Tests displaying the pet"""
