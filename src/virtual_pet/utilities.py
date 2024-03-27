@@ -27,6 +27,7 @@ def create_pet(name: AnyStr = "", species: Species = None) -> Union[Pet,None]:
     return Pet(name, species)
 
 def manage_pet(pet: Pet):
+    """ Interact with a selected pet """
     system('cls')
     pet.display()
     print('Options:')
