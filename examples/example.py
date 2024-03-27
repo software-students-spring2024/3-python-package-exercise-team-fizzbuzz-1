@@ -1,277 +1,50 @@
-# this is an example file showcasing the use of the functions. If the file is run, the user tests a demo/walkthrough of using the package. The code is commented to point out the main functions that are used.
+# Example file showcasing how to interact with virtual_pet methods and functions
 
-from virtual_pet.utilities import create_pet
+from typing import AnyStr, Union, Dict, List
+from os import system
+from virtual_pet.pet import Pet
+from virtual_pet.species import Species
+from virtual_pet.weapons import Weapon
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
 from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
-from os import system
+from virtual_pet.utilities import create_pet, create_weapon, play_game, manage_pet
 
-print()
-print()
-print("This will serve as a walkthrough of the various functions of this package.")
-print("Click any button when you'd like to progress to the next slide of the walkthrough.")
-print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=")
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+""" Use of functions from utilities.py """
 
-input('')
-system('clear')
+# start main game loop
+play_game()
 
-#  this is the body of utilities.play_game()
-pets = []
-print('Possible Actions:')
-print('\t1 - Create pet')
-if len(pets):
-    print(f'\t2 - Manage pets ({len(pets)} avaiable)')
-    print('\t3 - Exit')
-else:
-    print('\t2 - Exit')
-
-input('') # user input would be '1'
-print()
-print("You select 1, creating a pet.")
-print()
-
-input('')
-system('clear')
-
-print('Choose species: ')
-print('\t1 - Cat')
-print('\t2 - Dog')
-print('\t3 - Hamster')
-print('\t4 - Rock')
-
-input('') # user input would be '1'
-print()
-print("You select 1, creating a cat.")
-
-input('')
-system('clear')
-
-print('Enter pet name: ')
-
-input('') # user input would be 'Fluffy'
-print()
-print("You name the cat, Fluffy")
-
-input('')
-system('clear')
-
+# create instantiation of class Pet and return object to variable pet
 pet = create_pet(name="Fluffy", species=CAT)
-pets.append(pet)
 
-input('')
-print()
-print("A display of the pet's information is printed automatically:")
-input('')
+# create instantiation of class Weapon and return object to variable weapon
+# weapon of name Bazooka only kills cats and hamsters and makes sound "BOOOM"
+weapon = create_weapon(name="Bazooka",kill_list=[CAT.species,HAMSTER.species],sound="BOOOM")
 
-pet.display(True)
+# called by play_game(), provides users with options to interact with selected pet 
+manage_pet(pet)
 
-input('')
-system('clear')
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+""" Use of functions from pet.py """
+""" These functions are called by manage_pet() """
 
-print("We've successfully created a new pet. Now, let's navigate and manage this pet.")
+# returns the name of pet's species
+pet_species_name = pet.get_species_name()
 
-input('')
-system('clear')
+# feed pet with chicken if hunger bar allows and if pet is alive, returns true if pet is fed with no issues. Returns false otherwise
+pet.feed("Chicken")
 
-print('Possible Actions:')
-print('\t1 - Create pet')
-if len(pets):
-    print(f'\t2 - Manage pets ({len(pets)} avaiable)')
-    print('\t3 - Exit')
-else:
-    print('\t2 - Exit')
-
-input('') # user input would be '2'
-print()
-print("You select 2, to be able to manage a pet.")
-print()
-
-input('')
-system('clear')
-
-print('Choose pet:')
-i = 1
-for pet in pets:
-    print(f'\t{i} - {pet.name} ({pet.get_species_name()})')
-    i += 1
-
-input('') # user input would be '1'
-print()
-print("You select 1, to be able to manage Fluffy.")
-print()
-
-input('')
-system('clear')
-
+# Displays the pet along with their status on terminal
 pet.display()
-print('Options:')
-print('\t1 - Feed')
-print('\t2 - Exercise')
-print('\t3 - Sleep (UNIMPLEMENTED)')
-print('\t4 - Dye')
-print('\t5 - Kill')
-print('\t6 - Nothing')
 
-input('') # user input would be '2'
-print()
-print("You select 2, choosing to exercise Fluffy.")
-pet.exercise("Cimbing")
-print()
+# Changes the appearance of pet by dying its hair red. Returns true if successful (color is defined) and false otherwise
+pet.dye("red")
 
-input('')
-system('clear')
-print('...')
-print('You navigate to the manage my pet menu again')
+# Kill pet with weapon determined earlier (this will kill pet as weapon was initialized to kill cats)
+# Returns true if kill successful, False otherwise
+pet.kill(weapon) # alternatively, choose weapon from default_weapons, like GUN
 
-input('')
-
-pet.display()
-print('Options:')
-print('\t1 - Feed')
-print('\t2 - Exercise')
-print('\t3 - Sleep (UNIMPLEMENTED)')
-print('\t4 - Dye')
-print('\t5 - Kill')
-print('\t6 - Nothing')
-
-input('')
-print("Notice how Fluffy is a little hungrier now after exercising. Let's give him some food.")
-
-input('')
-print()
-print("You select 1, choosing to feed Fluffy.")
-
-input('')
-system('clear')
-print('What would you like to feed the pet?')
-
-input('')
-print()
-print("You choose to feed Fluffy some 'Salmon'.")
-pet.feed("Salmon")
-print()
-
-input('')
-system('clear')
-print('...')
-print('You navigate to the manage my pet menu again')
-
-input('')
-
-pet.display()
-print('Options:')
-print('\t1 - Feed')
-print('\t2 - Exercise')
-print('\t3 - Sleep (UNIMPLEMENTED)')
-print('\t4 - Dye')
-print('\t5 - Kill')
-print('\t6 - Nothing')
-
-input('')
-print("That's better. Fluffy is less hungry.")
-print("How about we dye him, you know, give him some style!")
-
-input('')
-print()
-print("You select 1, choosing to dye Fluffy.")
-
-input('')
-print('Enter color')
-
-input('')
-print()
-print("You select 'red' to dye him red.")
-pet.dye('red')
-
-input('')
-system('clear')
-print('...')
-print('You navigate to the manage my pet menu again')
-
-input('')
-
-pet.display()
-print('Options:')
-print('\t1 - Feed')
-print('\t2 - Exercise')
-print('\t3 - Sleep (UNIMPLEMENTED)')
-print('\t4 - Dye')
-print('\t5 - Kill')
-print('\t6 - Nothing')
-
-input('')
-print("Wooh! Fluffy with that new swag.")
-print("Alright, let's leave Fluffy alone for a bit, we've been bothering him for too long")
-
-input('')
-print()
-print("You select 6, to do nothing with Fluffy.")
+# Does nothing and pseudorandomly changes pet's status, possibly killing them if thresholds for survival are tested
+# returns True if any of the pet's status metrics change, False otherwise
 pet.do_nothing()
-
-input('')
-system('clear')
-print('...')
-print('You navigate to the manage my pet menu again')
-
-input('')
-
-pet.display()
-print('Options:')
-print('\t1 - Feed')
-print('\t2 - Exercise')
-print('\t3 - Sleep (UNIMPLEMENTED)')
-print('\t4 - Dye')
-print('\t5 - Kill')
-print('\t6 - Nothing')
-
-input('')
-print("Oh wow! Look at how his status bars have changed.")
-print("Alright, let's kill Fluffy.")
-
-input('')
-print()
-print("You select 5, to kill Fluffy.")
-
-input('')
-system('clear')
-
-print("What weapon would you like to use?")
-print('\t1 - Gun')
-print('\t2 - Chocolate Cake')
-print('\t3 - Peanut Butter')
-
-input('')
-print()
-print("You choose 2, Chocolate Cake. Psst.. Cats hate chocolate cake.")
-print()
-
-input('')
-pet.kill(CHOCOLATE_CAKE)
-
-input('')
-system('clear')
-print('...')
-print('Alright, this time you navigate to exit the game')
-
-input('')
-
-print('Possible Actions:')
-print('\t1 - Create pet')
-if len(pets):
-    print(f'\t2 - Manage pets ({len(pets)} avaiable)')
-    print('\t3 - Exit')
-else:
-    print('\t2 - Exit')
-
-input('')
-print()
-print("You choose 3, in order to exit.")
-
-input('')
-print('Thanks for playing :)')
-
-input('')
-system('clear')
-
-print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=")
-print("Thank you for going through this walkthrough and learning about the different functions of this game. Happy gaming!")
-print()
