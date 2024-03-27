@@ -1,5 +1,6 @@
 from virtual_pet.utilities import create_pet
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
+from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
 from os import system
 
 print()
@@ -104,7 +105,7 @@ print('\t1 - Feed')
 print('\t2 - Exercise')
 print('\t3 - Sleep (UNIMPLEMENTED)')
 print('\t4 - Dye')
-print('\t5 - Shoot')
+print('\t5 - Kill')
 print('\t6 - Nothing')
 
 input('')
@@ -126,7 +127,7 @@ print('\t1 - Feed')
 print('\t2 - Exercise')
 print('\t3 - Sleep (UNIMPLEMENTED)')
 print('\t4 - Dye')
-print('\t5 - Shoot')
+print('\t5 - Kill')
 print('\t6 - Nothing')
 
 input('')
@@ -159,11 +160,119 @@ print('\t1 - Feed')
 print('\t2 - Exercise')
 print('\t3 - Sleep (UNIMPLEMENTED)')
 print('\t4 - Dye')
-print('\t5 - Shoot')
+print('\t5 - Kill')
 print('\t6 - Nothing')
 
 input('')
-print("That's better. Fluffy is less hungry")
+print("That's better. Fluffy is less hungry.")
+print("How about we dye him, you know, give him some style!")
+
+input('')
+print()
+print("You select 1, choosing to dye Fluffy.")
+
+input('')
+print('Enter color')
+
+input('')
+print()
+print("You select 'red' to dye him red.")
+pet.dye('red')
+
+input('')
+system('clear')
+print('...')
+print('You navigate to the manage my pet menu again')
+
+input('')
+
+pet.display()
+print('Options:')
+print('\t1 - Feed')
+print('\t2 - Exercise')
+print('\t3 - Sleep (UNIMPLEMENTED)')
+print('\t4 - Dye')
+print('\t5 - Kill')
+print('\t6 - Nothing')
+
+input('')
+print("Wooh! Fluffy with that new swag.")
+print("Alright, let's leave Fluffy alone for a bit, we've been bothering him for too long")
+
+input('')
+print()
+print("You select 6, to do nothing with Fluffy.")
+pet.do_nothing()
+
+input('')
+system('clear')
+print('...')
+print('You navigate to the manage my pet menu again')
+
+input('')
+
+pet.display()
+print('Options:')
+print('\t1 - Feed')
+print('\t2 - Exercise')
+print('\t3 - Sleep (UNIMPLEMENTED)')
+print('\t4 - Dye')
+print('\t5 - Kill')
+print('\t6 - Nothing')
+
+input('')
+print("Oh wow! Look at how his status bars have changed.")
+print("Alright, let's kill Fluffy.")
+
+input('')
+print()
+print("You select 5, to kill Fluffy.")
+
+input('')
+system('clear')
+
+print("What weapon would you like to use?")
+print('\t1 - Gun')
+print('\t2 - Chocolate Cake')
+print('\t3 - Peanut Butter')
+
+input('')
+print()
+print("You choose 2, Chocolate Cake. Psst.. Cats hate chocolate cake.")
+print()
+
+input('')
+pet.kill(CHOCOLATE_CAKE)
+
+input('')
+system('clear')
+print('...')
+print('Alright, this time you navigate to exit the game')
+
+input('')
+
+print('Possible Actions:')
+print('\t1 - Create pet')
+if len(pets):
+    print(f'\t2 - Manage pets ({len(pets)} avaiable)')
+    print('\t3 - Exit')
+else:
+    print('\t2 - Exit')
+
+input('')
+print()
+print("You choose 3, in order to exit.")
+
+input('')
+print('Thanks for playing :)')
+
+input('')
+system('clear')
+
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=")
+print("Thank you for going through this walkthrough and learning about the different functions of this game. Happy gaming!")
+print()
+
 
 
 
