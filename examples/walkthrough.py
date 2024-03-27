@@ -1,4 +1,4 @@
-"""Example file to demonstrat the functionality of this package"""
+# this is a walkthrough of the game. If the file is run, the user tests a (narrated) demo/walkthrough of using the package. The code is commented to point out the main functions that are used.
 from virtual_pet.utilities import create_pet
 from virtual_pet.default_species import CAT, DOG, HAMSTER, ROCK
 from virtual_pet.default_weapons import GUN, CHOCOLATE_CAKE, PEANUT_BUTTER
@@ -13,6 +13,7 @@ print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=")
 input('')
 system('clear')
 
+#  this is the body of utilities.play_game()
 pets = []
 print('Possible Actions:')
 print('\t1 - Create pet')
@@ -22,7 +23,7 @@ if len(pets):
 else:
     print('\t2 - Exit')
 
-input('')
+input('') # user input would be '1'
 print()
 print("You select 1, creating a pet.")
 print()
@@ -36,7 +37,7 @@ print('\t2 - Dog')
 print('\t3 - Hamster')
 print('\t4 - Rock')
 
-input('')
+input('') # user input would be '1'
 print()
 print("You select 1, creating a cat.")
 
@@ -45,7 +46,7 @@ system('clear')
 
 print('Enter pet name: ')
 
-input('')
+input('') # user input would be 'Fluffy'
 print()
 print("You name the cat, Fluffy")
 
@@ -78,7 +79,7 @@ if len(pets):
 else:
     print('\t2 - Exit')
 
-input('')
+input('') # user input would be '2'
 print()
 print("You select 2, to be able to manage a pet.")
 print()
@@ -92,7 +93,7 @@ for pet in pets:
     print(f'\t{i} - {pet.name} ({pet.get_species_name()})')
     i += 1
 
-input('')
+input('') # user input would be '1'
 print()
 print("You select 1, to be able to manage Fluffy.")
 print()
@@ -109,7 +110,7 @@ print('\t4 - Dye')
 print('\t5 - Kill')
 print('\t6 - Nothing')
 
-input('')
+input('') # user input would be '2'
 print()
 print("You select 2, choosing to exercise Fluffy.")
 pet.exercise("Cimbing")
